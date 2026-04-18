@@ -1,0 +1,5 @@
+beautifulsoup4>=4.12,<5
+langfuse>=3,<4
+openai>=1.40,<2
+python-dotenv>=1,<2
+ulid-py>=1.1,<2

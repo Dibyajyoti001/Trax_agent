@@ -1,0 +1,88 @@
+[paths]
+output_root = "runs"
+cache_root = ".cache"
+
+[logging]
+level = "INFO"
+
+[ingestion]
+scan_nested_archives = true
+max_archive_depth = 2
+
+[runtime]
+team_name = "echo-fraud"
+langfuse_host = "https://challenges.reply.com/langfuse"
+llm_enabled = true
+audio_enabled = true
+require_tracing_for_llm = true
+request_timeout_seconds = 35
+max_retries = 0
+
+[models]
+supervisor = [
+  "z-ai/glm-4.5-air:free"
+]
+communication = [
+  "z-ai/glm-4.5-air:free"
+]
+transaction_pattern = [
+  "z-ai/glm-4.5-air:free"
+]
+geo_behavior = [
+  "z-ai/glm-4.5-air:free"
+]
+cluster = [
+  "z-ai/glm-4.5-air:free"
+]
+audio = [
+  "z-ai/glm-4.5-air:free"
+]
+judge = [
+  "z-ai/glm-4.5-air:free"
+]
+
+[budgets]
+seed_fraction = 0.18
+min_seed_count = 18
+max_seed_count = 420
+max_case_candidates = 96
+max_case_members = 18
+batch_size = 180
+max_case_discovery_calls = 120
+max_supervisor_calls = 320
+max_communication_calls = 140
+max_transaction_pattern_calls = 140
+max_geo_behavior_calls = 120
+max_audio_calls = 60
+max_cluster_calls = 80
+max_judge_calls = 180
+max_second_pass_calls = 54
+max_messages_per_case = 4
+max_audio_per_case = 2
+max_cluster_size = 14
+max_cluster_time_window_hours = 72
+
+[linking]
+message_lookback_hours = 168
+audio_lookback_hours = 12
+location_match_window_minutes = 180
+
+[seeds]
+high_value_quantile = 0.92
+high_amount_multiplier = 1.8
+new_recipient_amount = 350.0
+recipient_fan_in_threshold = 3
+message_risk_floor = 0.22
+graph_neighbor_floor = 3
+
+[token_limits]
+supervisor = 120
+specialist = 220
+cluster = 280
+judge = 240
+
+[guardrails]
+min_selected_count = 8
+max_selected_count = 220
+max_output_fraction = 0.18
+max_borderline_promotions = 24
